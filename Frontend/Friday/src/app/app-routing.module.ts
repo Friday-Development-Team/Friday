@@ -3,7 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { NotfoundComponent } from './notfound/notfound.component';
 
 const routes: Routes = [
-  {path: '**', component: NotfoundComponent}
+  //{ path: '**', component: NotfoundComponent },
+  { path: '', redirectTo: 'auth', pathMatch: 'full' }
 ];
 
 @NgModule({

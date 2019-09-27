@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { StoreModule } from './store/store.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import { StoreModule } from './store/store.module';
     AuthenticationModule,
     StoreModule
   ],
-  providers: [],
+  providers: [FormsModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

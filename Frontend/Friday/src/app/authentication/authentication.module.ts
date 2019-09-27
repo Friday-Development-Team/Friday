@@ -4,13 +4,14 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AuthService } from '../services/auth.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {
     path: 'auth', children: [
-      { path: 'login' },
-      { path: 'register' },
-      { path: '', redirectTo: 'login', pathMatch: 'full' }
+      { path: 'auth/login', component: LoginComponent },
+      { path: 'auth/register', component: RegisterComponent },
+      { path: '', redirectTo: 'auth/login', pathMatch: 'full' }
     ]
   }
 ];
@@ -19,7 +20,11 @@ const routes: Routes = [
   declarations: [LoginComponent, RegisterComponent],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    FormsModule, ReactiveFormsModule
+  ],
+  exports: [
+    RouterModule
   ],
   providers: [
     AuthService
