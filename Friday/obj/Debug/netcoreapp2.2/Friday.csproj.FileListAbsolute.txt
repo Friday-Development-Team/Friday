@@ -1,0 +1,16 @@
+B:\Friday\Friday\bin\Debug\netcoreapp2.2\Friday.deps.json
+B:\Friday\Friday\bin\Debug\netcoreapp2.2\Friday.runtimeconfig.json
+B:\Friday\Friday\bin\Debug\netcoreapp2.2\Friday.runtimeconfig.dev.json
+B:\Friday\Friday\bin\Debug\netcoreapp2.2\Friday.dll
+B:\Friday\Friday\bin\Debug\netcoreapp2.2\Friday.pdb
+B:\Friday\Friday\bin\Debug\netcoreapp2.2\Friday.xml
+B:\Friday\Friday\obj\Debug\netcoreapp2.2\Friday.csprojAssemblyReference.cache
+B:\Friday\Friday\obj\Debug\netcoreapp2.2\Friday.csproj.CoreCompileInputs.cache
+B:\Friday\Friday\obj\Debug\netcoreapp2.2\Friday.RazorAssemblyInfo.cache
+B:\Friday\Friday\obj\Debug\netcoreapp2.2\Friday.RazorAssemblyInfo.cs
+B:\Friday\Friday\obj\Debug\netcoreapp2.2\Friday.AssemblyInfoInputs.cache
+B:\Friday\Friday\obj\Debug\netcoreapp2.2\Friday.AssemblyInfo.cs
+B:\Friday\Friday\obj\Debug\netcoreapp2.2\Friday.RazorTargetAssemblyInfo.cache
+B:\Friday\Friday\obj\Debug\netcoreapp2.2\Friday.dll
+B:\Friday\Friday\obj\Debug\netcoreapp2.2\Friday.xml
+B:\Friday\Friday\obj\Debug\netcoreapp2.2\Friday.pdb
