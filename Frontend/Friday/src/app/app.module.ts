@@ -7,6 +7,7 @@ import { AuthenticationModule } from './authentication/authentication.module';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { StoreModule } from './store/store.module';
 import { FormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     AuthenticationModule,
-    StoreModule
+    StoreModule,
+    NgbModule
   ],
   providers: [FormsModule],
   bootstrap: [AppComponent]
