@@ -1,3 +1,70 @@
-<p>
-  history works!
-</p>
+<div class="container">
+
+  <div>
+    <ng-container *ngIf="history && history.orders.length; then thenTemplate; else elseTemplate"></ng-container>
+    <ng-template #thenTemplate>
+      <div class="centered">
+
+        <div *ngFor="let order of history.orders" class="for">
+
+          <div class="row fitted">
+
+            <div class="fitted col-sm-6 col-12">
+              <div>Ordered: {{order.orderTime | date : 'dd/MM/yyyy hh:mm:ss'}}</div>
+              <div *ngIf="expression">Completed drinks: {{order.completionTimeBeverage | date : 'dd/MM/yyyy hh:mm:ss'}}</div>
+              <div>Completed food: {{order.completionTimeFood | date : 'dd/MM/yyyy hh:mm:ss'}}</div>
+            </div>
+
+            <div class=" fitted col-sm-4 offset-sm-1 col-12">
+
+              <div class="row" *ngFor="let item of order.items">
+                <div class="col-sm-8 col-4">{{item.itemName}} </div>
+                <div class="col-2">X{{item.amount}}</div>
+              </div>
+
+              <div class="priceTotal">Total: {{order.totalPrice |  currency: 'EUR'}}</div>
+            </div>
+
+          </div>
+
+
+        </div>
+
+      </div>
+    </ng-template>
+    <ng-template #elseTemplate>
+      <h2 class="noOrders">No completed orders found!</h2>
+    </ng-template>
+
+
+  </div>
+</div>
+
+
+<!-- <div class="maxwidth">
+          <table class="table bordered">
+            <tr class="noBorder" *ngFor="let order of history.orders">
+              <td>
+
+                <div *ngFor="let order of item.items"> 
+
+                <div class="flex">
+                  <div>
+            <tr><small>Order time: {{order.orderTime | date:'short':'en-gb'}}</small></tr>
+            <tr><small>Completion time: {{order.completionTime | date :'short' : 'en-gb'}}</small></tr>
+
+        </div>
+
+        <table class="table">
+          <tr class="noborder" *ngFor="let item of order.items">
+            <td>{{item.itemName}}</td>
+            <td>{{item.amount}}</td>
+          </tr>
+        </table>
+
+      </div>
+       </div>
+      </td>
+      </tr>
+      </table>
+  </div> -->

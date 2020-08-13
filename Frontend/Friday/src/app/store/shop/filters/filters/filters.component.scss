@@ -1,0 +1,28 @@
+// input[type="checkbox"],
+// input[type="radio"] {
+//   display: none;
+//   &:checked + .square,
+//   &:checked + .circle {
+//     opacity: 1;
+//   }
+//   &:checked + .square .fill,
+//   &:checked + .circle .fill {
+//     opacity: 1;
+//   }
+//   &:checked ~ .label {
+//     opacity: 1;
+//   }
+// }
+
+.filterCheckbox {
+  padding: 10px;
+}
+
+h2 {
+  text-align: center;
+  border-bottom: solid 1px grey;
+}
+
+.padded {
+  padding: 10px;
+}

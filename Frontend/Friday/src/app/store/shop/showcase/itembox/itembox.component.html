@@ -1,3 +1,28 @@
-<p>
-  itembox works!
-</p>
+<div class="wrapper">
+  <!-- <div [className]="available?unavailable:info"> -->
+  <div class="img-wrapper">
+    <img class="img" [src]="getURL()">
+    <div class="img-placeholder"></div>
+  </div>
+
+  <h5 class="title">{{item.name}}</h5>
+  <p class="price">€<span>{{item.price}}</span></p>
+  <div class="details">
+    <div>
+      <hr>
+      <div class="row">
+
+        <div class="col-12 add-cart-wrapper cartIcon">
+          <form [formGroup]="form">
+            <div [ngClass]="{'error': form.get('amount').error}">
+              <input formControlName="amount" type="number" style="width: 25%; margin: auto" value="{{form.get('amount').value}}">
+            </div>
+          </form>
+          <button class="btn btn-block" style="width: 100%;" type="button" class="cart" (click)="onAddToCart()"><img
+              src="assets/cart_primary.svg" alt="Cart icon" /></button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- </div> -->
+</div>

@@ -1,0 +1,55 @@
+.noOrders {
+  width: 100%;
+  text-align: center;
+  margin-top: 250px;
+}
+
+.maxwidth {
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin-top: 10%;
+  padding: 0;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-around;
+}
+
+td {
+  border: none;
+}
+
+table.bordered {
+  margin-bottom: 0;
+}
+
+#minwidth {
+  min-width: 250px;
+}
+
+.centered {
+  margin: auto;
+  margin-top: 75px;
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.for {
+  padding: 7px;
+}
+.for:not(:first-child) {
+  border-top: 1px solid lightgrey;
+}
+
+.fitted {
+  min-width: min-content;
+}
+
+.priceTotal {
+  margin-top: 7px;
+  padding-top: 3px;
+  border-top: solid 1px grey;
+}

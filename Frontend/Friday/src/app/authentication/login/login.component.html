@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="authformcontainer">
   <div class="container">
     <div class="row">
@@ -7,9 +8,54 @@
           <div class="form-group">
             <label for="username">Username</label>
             <input type="text" name="Username" id="username" class="form-control">
+=======
+<div class="bgcontainer">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3">
+        <form [formGroup]="form">
+          <div class="form-group">
+            <h1>FRIDAY</h1>
+
+            <h2>Login</h2>
+
+            <div class="inputcontainer">
+
+              <div class="inputcontainer">
+                <label for="username">Username</label>
+                <input type="text" formControlName="username" name="Username form input" id="username"
+                  class="form-control"
+                  [ngClass]="{'form-controlErr': form.get('username').errors && form.get('username').touched && hasSubmitted}"
+                  placeholder="Username">
+                <p *ngIf="form.get('username').errors && form.get('username').touched && hasSubmitted" class="error">
+                  Please enter a
+                  username</p>
+              </div>
+
+              <div class="inputcontainer">
+                <label for="password">Password</label>
+                <input type="text" formControlName="password" name="Password form input" id="password"
+                  class="form-control"
+                  [ngClass]="{'form-controlErr': form.get('password').errors && form.get('password').touched && hasSubmitted}"
+                  placeholder="Password">
+                <p *ngIf="form.get('password').errors && form.get('password').touched && hasSubmitted" class="error">
+                  Please enter a
+                  password</p>
+              </div>
+
+              <div class="inputcontainer">
+                <button type="button" (click)="onSubmit()" class="btn btn-light btn-block">Login</button>
+              </div>
+
+            </div>
+>>>>>>> 09c26935c2c00a2d0e07de14afd650d487d5818d
           </div>
         </form>
       </div>
     </div>
   </div>
+<<<<<<< HEAD
 </div>
+=======
+</div>
+>>>>>>> 09c26935c2c00a2d0e07de14afd650d487d5818d

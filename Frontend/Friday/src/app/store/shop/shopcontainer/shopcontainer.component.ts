@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { RefService } from 'src/app/services/ref.service';
 
 @Component({
   selector: 'friday-shopcontainer',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShopcontainerComponent implements OnInit {
 
-  constructor() { }
+  private readonly ref: string = 'shop'
+
+  constructor(private refS: RefService) {
+    this.refS.sendRef(this.ref)
+  }
 
   ngOnInit() {
+
   }
 
 }

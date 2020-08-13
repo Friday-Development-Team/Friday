@@ -1,3 +1,19 @@
-<p>
-  toolscontainer works!
-</p>
+<div class="container">
+  <div class="row padded">
+
+    <button *ngIf="isAdmin && isCatering" class="btn btn-light btn-lg col-2"
+      [routerLink]="[ '/store/tools/admin']">Admin
+    </button>
+
+    <button *ngIf="isCatering && isAdmin" class="btn btn-light btn-lg col-2" [ngClass]="{'offset-1': isAdmin}"
+      [routerLink]="[ '/store/tools/catering']">Catering
+    </button>
+    <!-- No buttons needed if only 1 can be used -->
+  </div>
+
+  <div class="row padded extra">
+    <div class="col padded extra">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

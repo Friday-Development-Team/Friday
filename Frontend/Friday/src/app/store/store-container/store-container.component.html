@@ -1,12 +1,67 @@
-<div class="navbar">
-  Navbar with buttons
-  <button>Tool</button>
-  <!--NgIf Role not user-->
+<!-- <div class="container-fluid">
+  <div class="navbar row">
+   
+    <div class="col-1 buttons"> 
+      <button >Tool</button>
+      <button >History/Store</button>
+    </div>
+    <p class="col-2 offset-4">Test</p>
 
-  <button>History/Store</button>
-  <button>Logout</button>
-</div>
+    <button>Logout</button>
+  </div>
 
-<div>
-  <router-outlet></router-outlet>
+  <div>
+    <router-outlet></router-outlet>
+  </div>
+</div> -->
+<div class="bgcontainer">
+  <nav class="navbar navbar-expand-md navbar-light bg-light">
+    <a class="navbar-brand" href="#">Friday</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+
+        <li class="nav-item">
+          <button class="btn btn-dark btn-padded" *ngIf="(canActivateTools | async) && currentPage !== 'tools'"
+            [routerLink]="['/store/tools']">Tools</button>
+        </li>
+
+
+        <li class="nav-item">
+          <button class="btn btn-dark btn-padded" *ngIf="currentPage!=='history'"
+            [routerLink]="['/store/history']">History</button>
+        </li>
+
+        <li class="nav-item">
+          <button class="btn btn-dark btn-padded" *ngIf="currentPage!=='running' && hasRunningOrders"
+            [routerLink]="['/store/running']">Running orders</button>
+        </li>
+
+
+        <li class="nav-item">
+          <button class="btn btn-dark btn-padded" *ngIf="currentPage!=='shop'"
+            [routerLink]="['/store/shop']">Shop</button>
+        </li>
+
+        <li class="nav-item">
+          <button class="btn btn-dark btn-padded" *ngIf="currentPage!=='catering' && hasRole('catering')"
+            [routerLink]="['/store/catering']">Catering</button>
+        </li>
+
+      </ul>
+      <div class="form-inline my-2 my-lg-0">
+        <p class="mr-sm-2">{{currentUser.name}}</p>
+        <p class="mr-sm-2">{{currentUser.balance | currency : 'EUR'}}</p>
+        <button class="btn btn-danger my-2 my-sm-0" (click)="logout()">Logout</button>
+      </div>
+    </div>
+  </nav>
+
+  <div>
+    <router-outlet></router-outlet>
+  </div>
 </div>

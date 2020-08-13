@@ -1,0 +1,12 @@
+.padded {
+  margin-top: 10px;
+  &c.extra {
+    margin-top: 20px;
+  }
+}
+
+.toolcontainer {
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: white;
+}

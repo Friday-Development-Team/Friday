@@ -1,3 +1,37 @@
-<p>
-  cateringtools works!
-</p>
+<div class="toolcontainer container">
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-3">
+      <div class="admincontainer">
+        <ul>
+          <li>
+            <a [routerLink]="['/store/tools/catering/additem']" (click)="setTouched()">
+              <div class="noborder">Add Item</div>
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="['/store/tools/catering/managestock']" (click)="setTouched()">
+              <div>Manage Stock</div>
+            </a>
+          </li>
+          
+          <li>
+            <a [routerLink]="['/store/tools/catering/history']" (click)="setTouched()">
+              <div>History</div>
+            </a>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+    <div class="col-xs-12 offset-sm-2 col-sm-7">
+      <div [ngClass]="{'admincontainer': isTouched}">
+        <div>
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>

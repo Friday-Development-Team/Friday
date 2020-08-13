@@ -1,0 +1,46 @@
+<div class="container">
+  <form [formGroup]="form" (ngSubmit)="submit()">
+
+    <div class="row">
+      <div class="col offset-1">
+
+        <label class="paddedright" for="selectedUser">Select a user: </label>
+        <select formControlName="selection" id="selectedUser">
+          <option name="User" *ngFor="let item of (users | async)" [ngValue]="item">{{item.name}}</option>
+        </select>
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="col offset-1">
+        <label class="paddedright"  for="currentBalance">Current balance</label>
+        <input formControlName="currentBalance" name="CurrentBalance" id="currentBalance">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col offset-1">
+        <label fridayTwoDigitDecimalNumber class="paddedright"  for="balance">Change to balance</label>
+        <input formControlName="balance" type="number" step="0.01" name="Balance" id="balance"></div>
+    </div>
+
+    <div class="row">
+      <div class="col offset-1">
+        <label class="paddedright"  for="newBalance">New balance</label>
+        <input formControlName="newBalance" name="NewBalance" id="newBalance">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col offset-1">
+        <button [disabled]="!form.get('selection').touched || form.invalid || !form.get('balance').touched" class="btn btn-primary" type="submit">Submit</button>
+      </div>
+    </div>
+
+    <div *ngIf="form.get('selection').touched && form.invalid && form.get('balance').touched && showError" class="row paddedtop">
+      <div class="col-8 offset-1">
+        <p class="alert alert-danger">Please provide a valid balance. Balance will be added or subtracted</p>
+      </div>
+    </div>
+  </form>
+</div>

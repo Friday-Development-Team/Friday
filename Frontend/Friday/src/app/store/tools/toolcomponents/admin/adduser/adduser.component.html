@@ -1,0 +1,51 @@
+<form [formGroup]="form" (ngSubmit)="register()">
+  <div class="form-group">
+
+
+    <div class="inputcontainer">
+
+      <div class="inputcontainer">
+
+        <label for="username">Username</label>
+        <input type="text" formControlName="username" name="username" id="username" class="form-control"
+          [ngClass]="{'onErrorInput': form.get('username').errors && form.get('username').touched && hasSubmitted}"
+          placeholder="Username">
+        <p *ngIf="form.get('username').errors.required && form.get('username').touched && hasSubmitted" class="error">
+          Please enter a
+          username</p>
+        <p class="error"
+          *ngIf="form.get('username').errors.userAlreadyExists && form.get('username').touched && hasSubmitted">That
+          username is already taken. Please choose another</p>
+      </div>
+
+      <div class="inputcontainer" formGroupName="passwordgroup">
+
+        <label for="password">Password</label>
+        <input type="text" formControlName="password" name="Password form input" id="password" class="form-control"
+          placeholder="Password">
+        <p *ngIf="form.errors && form.get('passwordgroup').get('password').touched && hasSubmitted" class="error">
+          Please enter a
+          password</p>
+
+
+        <label for="confirmpassword">Confirm Password</label>
+        <input type="text" formControlName="confirmpassword" name="Password confirmation form input"
+          id="confirmpassword" class="form-control" placeholder="Password confirmation">
+        <p *ngIf="form.errors && form.get('passwordgroup').get('confirmpassword').touched && hasSubmitted" class="error">
+          Please enter a
+          password</p>
+
+      </div>
+
+      <div class="inputcontainer">
+        <button type="button" type="submit" class="btn btn-primary btn-block">Submit</button>
+      </div>
+
+      <div class="inputcontainer" *ngIf="hasSubmitted && check">
+        <p class="alert alert-success" *ngIf="success">User added!</p>
+        <p class="alert alert-danger" *ngIf="!success">Something went wrong there!</p>
+      </div>
+
+    </div>
+  </div>
+</form>

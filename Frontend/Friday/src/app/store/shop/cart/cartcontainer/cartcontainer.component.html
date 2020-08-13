@@ -1,3 +1,5 @@
-<p>
-  cartcontainer works!
-</p>
+<div>
+  <friday-cart [cart]='(cart | async)' (onRemove)="deleteItem($event)" (onOrderPlace)="placeOrder()"
+    (onCartClear)="clearCart()">
+  </friday-cart>
+</div>

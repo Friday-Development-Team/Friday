@@ -1,3 +1,11 @@
-<p>
-  filters works!
-</p>
+<div>
+  <h2>Filters</h2>
+  <form class="padded">
+    <div *ngFor="let item of priceFilters; let i=index">
+      <input class="filterCheckbox padded" type="radio" [checked]='item.checked'
+        (click)="applyFilter('price', i)">{{item.text}}<br>
+    </div>
+  </form>
+
+  To be added
+</div>

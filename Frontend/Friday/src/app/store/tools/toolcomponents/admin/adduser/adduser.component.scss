@@ -1,0 +1,61 @@
+.container {
+  height: 100%;
+  width: 100%;
+}
+
+.bgcontainer {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  background: linear-gradient(to bottom left, #b51f85, teal);
+}
+
+form {
+  border-radius: 10px;
+}
+
+.form-group {
+  margin: auto;
+  text-align: center;
+  padding: 20px;
+
+//   h1,
+//   h2,
+//   label {
+//     color: white;
+//   }
+//   h1 {
+//     padding: 30px;
+//   }
+}
+
+label{
+    padding-top: 10px;
+}
+.inputcontainer {
+  padding: 10px;
+}
+
+#submit {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.error {
+  border-radius: 0 0 5px 5px;
+  background-color: orangered;
+  color: white;
+}
+
+.form-control {
+  border-radius: 5px;
+}
+
+.form-controlErr {
+  border-radius: 5px 5px 0 0;
+}
+
+.onErrorInput {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}

@@ -1,0 +1,30 @@
+<div class="container">
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="row">
+      <div class="col">
+        <label for="cancel">Accepted orders can be cancelled: </label>
+        <input formControlName="cancel" type="checkbox" [checked]="config.cancelOnAccepted" name="cancel" id="cancel">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label for="combined">Kitchen and Catering are combined: </label>
+        <input formControlName="combined" type="checkbox" [checked]="config.combinedCateringKitchen" name="combined"
+          id="combined">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <button class="btn btn-primary" type="submit">Submit</button>
+      </div>
+    </div>
+
+    <div class="row success" *ngIf="submitted && check">
+      <div class="col">
+        <p *ngIf="success" class="alert alert-success">Config saved</p>
+        <p *ngIf="!success" class="alert alert-danger">Woa, something went wrong</p>
+      </div>
+    </div>
+  </form>
+</div>

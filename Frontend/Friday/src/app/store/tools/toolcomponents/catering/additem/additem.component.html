@@ -1,0 +1,115 @@
+<div class="container">
+  <form [formGroup]="form" (ngSubmit)="submit()">
+
+    <div class="row">
+      <div class="col offset-1">
+        <label for="name">Name: </label>
+        <input formControlName="name" id="name" type="text">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col offset-1">
+        <label for="price">Price: </label>
+        <input formControlName="price" id="price" type="number">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col offset-1">
+        <label for="type">Type: </label>
+        <input formControlName="type" id="type" type="text">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col offset-1">
+        <label for="count">Count: </label>
+        <input formControlName="count" id="count" type="number">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col offset-1">
+        <label for="image">Image: </label>
+
+        <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo modal</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col offset-1">
+        <label for="size">Portion size: </label>
+        <input formControlName="size" id="size" type="text">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col offset-1">
+        <label for="calories">Calories: </label>
+        <input formControlName="calories" id="calories" type="number">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col offset-1">
+        <label for="sugar">Sugar content: </label>
+        <input formControlName="sugarcontent" id="sugar" type="number">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col offset-1">
+        <label for="salt">Salt content: </label>
+        <input formControlName="saltcontent" id="salt" type="number">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col offset-1">
+        <label for="allergens">Allergens: </label>
+        <input formControlName="allergens" id="allergens" type="text">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col offset-1">
+        <button class="btn btn-primary" type="submit">Submit</button>
+      </div>
+    </div>
+
+    <div class="row" *ngIf="hasSubmitted && check">
+      <div *ngIf="!success && form.invalid" class="col-12 alert alert-danger">Woa, something went wrong there. Check the
+        tooltips for formatting.</div>
+      <div *ngIf="success" class="col-12 alert alert-success">Item successfully added!</div>
+    </div>
+
+  </form>
+</div>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Choose image</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <form [formGroup]="form">
+          
+        </form>
+        <!-- <input formControlName="image" id="image" type="image"> -->
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+  </div>
+</ng-template>
+
+
+
+<hr>
+
+<pre>{{closeResult}}</pre>

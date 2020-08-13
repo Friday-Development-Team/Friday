@@ -1,0 +1,34 @@
+.navbar {
+  border: 2px solid black;
+  background: cadetblue;
+  margin: 0;
+}
+
+.row {
+  border: 1px solid green;
+  margin: 0;
+  padding: 0 20px;
+  width: 100%;
+}
+
+.container-fluid {
+  margin: 0;
+  padding: 0;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  button {
+    margin: 0 5px;
+  }
+}
+
+.btn-padded {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.nondisplay {
+  display: none;
+}

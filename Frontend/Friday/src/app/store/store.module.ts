@@ -16,18 +16,56 @@ import { Routes, RouterModule } from '@angular/router';
 import { ToolscontainerComponent } from './tools/toolscontainer/toolscontainer.component';
 import { AdmintoolsComponent } from './tools/admintools/admintools.component';
 import { CateringtoolsComponent } from './tools/cateringtools/cateringtools.component';
+import { AuthGuard } from '../authentication/auth.guard';
+import { PricefilterPipe } from '../pipes/pricefilter.pipe';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SearchPipe } from '../pipes/search.pipe';
+import { OrderPipe } from '../pipes/order.pipe';
+import { RoleGuard } from './guards/role.guard';
+import { RunningComponent } from './running/running.component';
+import { AdjustUserComponent } from './tools/toolcomponents/admin/adjust-user/adjust-user.component';
+import { AdminBaseComponent } from './tools/toolcomponents/admin/admin-base/admin-base.component';
+import { TwoDigitDecimalNumberDirective } from './directives/two-digit-decimal-nummer.directive';
+import { AdduserComponent } from './tools/toolcomponents/admin/adduser/adduser.component';
+import { LogsComponent } from './tools/toolcomponents/admin/logs/logs.component';
+import { ConfigComponent } from './tools/toolcomponents/admin/config/config.component';
+import { AdditemComponent } from './tools/toolcomponents/catering/additem/additem.component';
+import { ManagestockComponent } from './tools/toolcomponents/catering/managestock/managestock.component';
+import { TotalhistoryComponent } from './tools/toolcomponents/catering/totalhistory/totalhistory.component';
+import { CateringComponent } from './catering/catering.component';
 
 const routes: Routes = [
   {
+<<<<<<< HEAD
     path: 'store', children: [
       { path: 'store/', redirectTo: 'shop', pathMatch: 'full' },
+=======
+    path: 'store', component: StoreContainerComponent, canActivate: [AuthGuard], children: [
+      { path: '', redirectTo: 'shop', pathMatch: 'full' },
+>>>>>>> 09c26935c2c00a2d0e07de14afd650d487d5818d
       { path: 'shop', component: ShopcontainerComponent },
       { path: 'history', component: HistoryComponent },
+      { path: 'running', component: RunningComponent },
       { path: 'orders', component: OrdersComponent },
+      { path: 'catering', component: CateringComponent, canActivate: [RoleGuard], data: { role: ['admin', 'catering'] } },
       {
-        path: 'tools', children: [
-          { path: 'admin', component: AdmintoolsComponent },
-          { path: 'catering', component: CateringtoolsComponent }
+        path: 'tools', component: ToolscontainerComponent, canActivate: [RoleGuard], data: { role: ['admin', 'catering'] }, children: [
+          {
+            path: 'admin', component: AdmintoolsComponent, canActivate: [RoleGuard], data: { role: ['admin'] }, children: [
+              // { path: '', redirectTo: 'adduser', pathMatch: 'full' },//Not needed, let user select first
+              { path: 'adduser', component: AdduserComponent },
+              { path: 'adjustuser', component: AdjustUserComponent },
+              { path: 'logs', component: LogsComponent },
+              { path: 'config', component: ConfigComponent }
+            ]
+          },
+          {
+            path: 'catering', component: CateringtoolsComponent, canActivate: [RoleGuard], data: { role: ['catering'] }, children: [
+              { path: 'additem', component: AdditemComponent },
+              { path: 'managestock', component: ManagestockComponent },
+              { path: 'history', component: TotalhistoryComponent }
+            ]
+          }
         ]
       }
     ]
@@ -49,16 +87,39 @@ const routes: Routes = [
     OrdersComponent,
     ToolscontainerComponent,
     AdmintoolsComponent,
-    CateringtoolsComponent],
+    CateringtoolsComponent,
+    PricefilterPipe,
+    SearchPipe,
+    OrderPipe,
+    RunningComponent,
+    AdjustUserComponent,
+    AdminBaseComponent,
+    TwoDigitDecimalNumberDirective,
+    AdduserComponent,
+    LogsComponent,
+    ConfigComponent,
+    AdditemComponent,
+    ManagestockComponent,
+    TotalhistoryComponent,
+    CateringComponent
+  ],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     RouterModule
   ],
   providers: [
-    UserService
-  ]
+    UserService,
+    AuthGuard,
+    RoleGuard,
+    PricefilterPipe,
+    SearchPipe,
+    OrderPipe
+  ],
+  exports: [RouterModule]
 })
 export class StoreModule { }

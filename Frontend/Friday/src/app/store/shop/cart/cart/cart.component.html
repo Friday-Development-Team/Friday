@@ -1,3 +1,69 @@
-<p>
-  cart works!
-</p>
+<div class="cartBox">
+
+  <h4 style="padding-top: 10px;" class="center">Cart</h4>
+
+  <div *ngIf="!cart || !cart.items.length; else notempty">
+    <p class="center">Cart is empty</p>
+  </div>
+
+
+  <ng-template #notempty>
+    <table style="width:100%;">
+      <tbody *ngFor="let item of cart.items">
+        <tr>
+          <td>{{item.item.name}}</td>
+          <td>X {{item.amount}}</td>
+          <td><button class="btn-danger" (click)='deleteItem(item.item.id)' style="border-radius: 10px;">x</button>
+          </td>
+        </tr>
+      </tbody>
+
+      <hr>
+
+
+    </table>
+
+    <div>
+      <h5 style="padding-top: 10px;" class="center">Total</h5>
+      <p class="center">€{{cart.total}}</p>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <button class="btn btn-primary btn-block col-md-12 col-lg-9" (click)="placeOrder()">Place Order</button>
+        <button class="btn btn-danger btn-block col-md-12 col-lg-3 clear" (click)="clearCart()">
+          Clear
+        </button>
+      </div>
+      <div class="row" style="padding-top: 20px">
+        <div class="alert alert-danger col-12" *ngIf="hasError" role="alert">
+          You don't have enough credit!
+        </div>
+      </div>
+    </div>
+
+
+    <!-- <div style="height: 1.5em; display: flex; justify-content: space-between">
+      <p>Item</p>
+      <p>Quantity</p>
+      <p>Price</p>
+      <p>Remove</p>
+    </div>
+    <div style="background-color: white;" class="item" *ngFor="let item of arrItems">
+      <div style="height: 1.5em;">
+        <div class="description" style="display: flex; justify-content: space-between">
+          <p>{{item[0].name}}:</p>
+          <p>€{{item[0].price}}</p>
+          <p>{{item[1]}}</p>
+          <div>
+            <button class="btn-danger" (click)='deleteItem(item.key)' style="border-radius: 10px;">x</button>
+          </div>
+        </div>
+         <div class="col-6-sm price">
+            <p>{{item[1]*item[0].price | currency:'EUR':'symbol':'1.0-0' }}</p>
+          </div>
+      </div>
+    </div> -->
+  </ng-template>
+
+</div>

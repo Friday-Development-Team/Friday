@@ -1,0 +1,148 @@
+<div class="container">
+  <form [formGroup]="form" (ngSubmit)="submit()">
+
+    <!-- Control form -->
+    <div class="row">
+      <div class="col offset-1">
+
+        <label class="paddedright" for="selection">Select a log type: </label>
+        <select formControlName="selection" id="selection">
+          <option name="Log type" [ngValue]="item" *ngFor="let item of logtypes">{{item.display}}</option>
+        </select>
+        <div *ngIf="needsInput">
+          <label class="paddedright" for="input">
+
+            {{selected.inputDisplayName}}:
+
+          </label>
+          <select formControlName="input" id="input">
+
+            <option [ngValue]="item" *ngFor="let item of displayList">{{item}}</option>
+
+          </select>
+
+        </div>
+
+      </div>
+    </div>
+    <!-- End control form -->
+
+    <!-- Submit -->
+    <div class="row">
+      <div class="col offset-1">
+        <button class="btn btn-primary" type="submit">Submit</button>
+      </div>
+    </div>
+    <!-- End submit -->
+
+    <hr *ngIf="hasSelectedLog">
+
+    <!-- Data -->
+    <div class="row">
+      <div class="col offset-1">
+
+        <!-- Has data -->
+        <div *ngIf="data && hasSelectedLog">
+          <ng-container *ngIf="(selectedDisplayType==='list'); then list; else number">
+          </ng-container>
+
+          <!-- List data -->
+          <ng-template #list>
+
+            <div class="centered">
+              <ng-container *ngIf="selectedLogType==='log'; then loglist; else itemamountlist"></ng-container>
+
+              <!-- Log list -->
+              <ng-template #loglist>
+                <div *ngFor="let report of (data | async)" class="for">
+                  <p>{{report.name}}</p>
+                  <div class="row fitted">
+
+                    <div class="fitted col-sm-6 col-12">
+                      <div>Time: {{report.time | date : 'dd/MM/yyyy hh:mm:ss'}}</div>
+
+
+                    </div>
+
+                    <div class=" fitted col-sm-4 offset-sm-1 col-12">
+
+                      <div class="row">
+                        <!-- <div class="col-sm-8 col-4">{{report.name}}: </div> -->
+                        <div class="col">
+
+                          <ng-container *ngIf="report.type==='currency'; then currency; else item">
+                          </ng-container>
+                          <ng-template #currency>
+                            {{report.amount | currency : 'EUR'}}
+                          </ng-template>
+                          <ng-template #item>
+                            {{report.amount}} {{report.amount===1?'item': 'items'}}
+                          </ng-template>
+
+
+
+                        </div>
+                      </div>
+
+
+                    </div>
+
+                  </div>
+
+
+                </div>
+              </ng-template>
+              <!-- End log list -->
+
+              <!-- Item amount -->
+              <ng-template #itemamountlist>
+                <div *ngFor="let item of ( data | async)" class="for">
+
+                  <div class="row fitted">
+
+                    <div class="fitted col-sm-6 col-12">
+                      <div>{{item.item.name}}</div>
+                      <div>{{item.amount}} {{displayText}}</div>
+
+                    </div>
+
+                  </div>
+
+                </div>
+              </ng-template>
+              <!-- End item amount -->
+
+            </div>
+
+          </ng-template>
+          <!-- End list -->
+
+          <ng-template #number >
+            Total income: {{(data | async) | currency : 'EUR'}}
+          </ng-template>
+        </div>
+        <!-- End has data -->
+
+        <!-- No data -->
+        <div *ngIf="
+          (selected.displayType==='list' && (!!!data || !!!data.length))
+           || 
+           (selected.displayType==='number' && data===-1)
+           && hasSelectedLog">
+          <h3 class="noOrders noMargin">No data found!</h3>
+        </div>
+        <!-- End no data -->
+
+      </div>
+    </div>
+    <!-- End data -->
+
+
+    <!-- <div *ngIf="form.get('selection').touched && form.invalid && form.get('balance').touched && showError"
+        class="row paddedtop">
+        <div class="col-8 offset-1">
+          <p class="alert alert-danger">Please provide a valid balance. Balance will be added or subtracted</p>
+        </div>
+      </div> -->
+  </form>
+</div>

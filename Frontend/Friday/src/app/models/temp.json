@@ -1,0 +1,49 @@
+{
+    "orders": [
+        {
+            "totalPrice": 6.0,
+            "orderTime": "2019-12-05T19:14:27.8670645",
+            "completionTime": "0001-01-01T00:00:00",
+            "items": [
+                {
+                    "itemName": "Water",
+                    "amount": 6
+                }
+            ]
+        },
+        {
+            "totalPrice": 6.0,
+            "orderTime": "2019-12-05T19:14:29.44446",
+            "completionTime": "0001-01-01T00:00:00",
+            "items": [
+                {
+                    "itemName": "Water",
+                    "amount": 6
+                }
+            ]
+        },
+        {
+            "totalPrice": 4.0,
+            "orderTime": "2019-12-05T19:24:29.7963903",
+            "completionTime": "0001-01-01T00:00:00",
+            "items": [
+                {
+                    "itemName": "Water",
+                    "amount": 4
+                }
+            ]
+        },
+        {
+            "totalPrice": 3.0,
+            "orderTime": "2019-12-05T19:25:48.7108348",
+            "completionTime": "0001-01-01T00:00:00",
+            "items": [
+                {
+                    "itemName": "Water",
+                    "amount": 3
+                }
+            ]
+        }
+    ],
+    "userName": "Admin"
+}

@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CateringtoolsComponent implements OnInit {
 
+  isTouched: boolean = false
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  setTouched() {
+    this.isTouched = true
   }
 
 }

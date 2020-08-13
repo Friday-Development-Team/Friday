@@ -17,7 +17,7 @@
                 </Navbar>
                 <Outlet>
                     <Option1>
-                        <StoreContainer>
+                        <ShopContainer>
                             <FilterContainer Service="FilterService">
                                 <Filters>Component</Filters>
                             </FilterContainer>
@@ -30,11 +30,11 @@
                                     <ItemBox>Component</ItemBox>
                                 </Showcase>
                             </ShowcaseContainer>
-                        </StoreContainer>
+                        </ShopContainer>
                     </Option1>
                     <Option2>
                         <OrderHistory Service="DataService" Type="NgFor">
-                            <HistoryItem>Component</HistoryItem>
+                            <!--<HistoryItem>Component</HistoryItem>-->
                         </OrderHistory>
                     </Option2>
                     <Option3>

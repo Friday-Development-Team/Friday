@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'friday-admintools',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdmintoolsComponent implements OnInit {
 
-  constructor() { }
+  isTouched: boolean = false
+
+  constructor(private router: Router) { }
 
   ngOnInit() {
+    //this.router.getCurrentNavigation().finalUrl.toString().endsWith('admin')
+  }
+
+  setTouched() {
+    this.isTouched = true
   }
 
 }
