@@ -1,0 +1,169 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Friday</name>
+    </assembly>
+    <members>
+        <member name="M:Friday.Controllers.ItemController.Get">
+            <summary>
+            Returns a list containing all the Items. Check Schema's for their format.
+            </summary>
+            <returns>List of Items</returns>
+        </member>
+        <member name="M:Friday.Controllers.ItemController.Get(System.Int32)">
+            <summary>
+            Returns the details of a single Item, referenced via its provided ID.
+            </summary>
+            <param name="id">ID of the Item</param>
+            <returns>Details of said Item</returns>
+        </member>
+        <member name="M:Friday.Controllers.ItemController.Put(System.Int32,System.Int32)">
+            <summary>
+            Changes the Count of an Item, or how many items of a certain Item are still in stock. Use a negative number to subtract. 
+            </summary>
+            <param name="id">Id of the Item</param>
+            <param name="amount">Amount to be added. Negative to subtract</param>
+            <returns>True if it was successful. You can't get a negative amount, at best the count can be reduced to 0</returns>
+        </member>
+        <member name="M:Friday.Controllers.OrderController.Get(System.String)">
+            <summary>
+            Returns the history of all the completed Orders placed by a user.
+            </summary>
+            <param name="name">Name of the user</param>
+            <returns>Order history. Check schema for format</returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Friday.Controllers.OrderController.Post(Friday.DTOs.OrderDTO)" -->
+        <member name="M:Friday.Controllers.OrderController.Accept(System.Int32,System.Boolean)">
+            <summary>
+            Sets the Accepted flag of an Order.
+            </summary>
+            <param name="id">Id of the Order</param>
+            <param name="value">True if the Order needs to be Accepted. False if it should return to Pending</param>
+            <returns>True if the change was successful and was not already set to that value</returns>
+        </member>
+        <member name="M:Friday.Controllers.OrderController.Cancel(System.Int32)">
+            <summary>
+            Cancels an Order. Sets the Status flag to Cancelled. This cannot be undone. A new Order needs to be placed instead.
+            An Order can only be cancelled if its Status is Pending.
+            </summary>
+            <param name="id"></param>
+            <returns>True if the change was successful.</returns>
+        </member>
+        <member name="M:Friday.Data.IServices.IOrderService.GetHistory(System.String)">
+            <summary>
+            Returns all the completed Orders of a specified user.
+            </summary>
+            <param name="username">Username of the user</param>
+            <returns>Object containing all the Orders</returns>
+        </member>
+        <member name="M:Friday.Data.IServices.IOrderService.SetAccepted(System.Int32,System.Boolean)">
+            <summary>
+            Sets the Accepted flag to the specified value.
+            </summary>
+            <param name="id">Id of the Order</param>
+            <param name="value">New value</param>
+            <returns>True if the value was correctly changed, false if the Order wasn't found or the old value was equal to the new value</returns>
+        </member>
+        <member name="M:Friday.Data.IServices.IOrderService.PlaceOrder(Friday.DTOs.OrderDTO)">
+            <summary>
+            Places an Order. Checks if the Order is valid and can be placed.
+            </summary>
+            <param name="orderdto">DTO</param>
+            <returns>True if the Order is valid and could be placed</returns>
+        </member>
+        <member name="M:Friday.Data.IServices.IOrderService.SetCompleted(System.Int32)">
+            <summary>
+            Sets the Order status to completed.
+            </summary>
+            <param name="id"></param>
+            <returns>True if successful</returns>
+        </member>
+        <member name="M:Friday.Data.IServices.IOrderService.Cancel(System.Int32)">
+            <summary>
+            Cancels an Order. An Order can only be cancelled if it isn't Completed or, depending on configuration, not Accepted.
+            </summary>
+            <param name="id">Id of the Order</param>
+            <returns>True if successful</returns>
+        </member>
+        <member name="M:Friday.Data.ServiceInstances.ItemService.GetDetails(System.Int32)">
+            <summary>
+            Returns the details of a specified Item
+            </summary>
+            <param name="id"></param>
+            <returns>ItemDetails, null if not found</returns>
+        </member>
+        <member name="M:Friday.Data.ServiceInstances.ItemService.ChangeCount(System.Int32,System.Int32)">
+            <summary>
+            Changes the Count of an Item. Will Add the specified amount to the Count. Will subtract if amount if negative. Addition/subtraction is needed to avoid concurrency issues.
+            </summary>
+            <param name="id">Id of the item</param>
+            <param name="amount"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Friday.Data.ServiceInstances.OrderService.GetHistory(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Friday.Data.ServiceInstances.OrderService.SetAccepted(System.Int32,System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:Friday.Data.ServiceInstances.OrderService.PlaceOrder(Friday.DTOs.OrderDTO)">
+            <inheritdoc />
+        </member>
+        <member name="M:Friday.Data.ServiceInstances.OrderService.SetCompleted(System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Friday.Data.ServiceInstances.OrderService.Cancel(System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Friday.DTOs.OrderDTO.IsValid">
+            <summary>
+            Checks if this object is valid.
+            </summary>
+            <returns>True if valid, else false</returns>
+        </member>
+        <member name="T:Friday.Models.Item">
+            <summary>
+            Class containing information about Items used in the shop. Contains only basic information, such as name, price, type (food or drink) and the amount left.
+            </summary>
+        </member>
+        <member name="P:Friday.Models.ItemDetails.Size">
+            <summary>
+            How much one item is. Item is responsible for both amount and unit (33cl, 200g, 1 hot dog).
+            </summary>
+        </member>
+        <member name="P:Friday.Models.ItemDetails.Calories">
+            <summary>
+            Calories per serving
+            </summary>
+        </member>
+        <member name="P:Friday.Models.ItemDetails.SugarContent">
+            <summary>
+            Amount of sugar per serving
+            </summary>
+        </member>
+        <member name="P:Friday.Models.ItemDetails.SaltContent">
+            <summary>
+            Amount of salt per serving
+            </summary>
+        </member>
+        <member name="P:Friday.Models.ItemDetails.Allergens">
+            <summary>
+            Known allergens in the item (nuts, milk, etc)
+            </summary>
+        </member>
+        <member name="M:Friday.Models.ShopUser.UpdateBalance(System.Double)">
+            <summary>
+            Adds the specified amount to the User's Balance. Adding a negative amount is the same as a subtraction.
+            </summary>
+            <param name="amount">Amount to be added/subtracted</param>
+            <returns>True if it was successful</returns>
+        </member>
+        <member name="M:Friday.Models.ShopUser.HasBalance(System.Double)">
+            <summary>
+            Checks if the user has enough balance.
+            </summary>
+            <param name="amount">Amount</param>
+            <returns>True if the User has enough Balance</returns>
+        </member>
+    </members>
+</doc>

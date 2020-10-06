@@ -36,8 +36,13 @@ import { CateringComponent } from './catering/catering.component';
 
 const routes: Routes = [
   {
+<<<<<<< HEAD
+    path: 'store', children: [
+      { path: 'store/', redirectTo: 'shop', pathMatch: 'full' },
+=======
     path: 'store', component: StoreContainerComponent, canActivate: [AuthGuard], children: [
       { path: '', redirectTo: 'shop', pathMatch: 'full' },
+>>>>>>> 09c26935c2c00a2d0e07de14afd650d487d5818d
       { path: 'shop', component: ShopcontainerComponent },
       { path: 'history', component: HistoryComponent },
       { path: 'running', component: RunningComponent },
@@ -103,6 +108,9 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     FormsModule,
     ReactiveFormsModule
+  ],
+  exports: [
+    RouterModule
   ],
   providers: [
     UserService,
